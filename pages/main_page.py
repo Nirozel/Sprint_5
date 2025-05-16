@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
-from locators.locators import MainPageLocators
+from locators.locators import MainPageLocators, AuthModalLocators
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(BasePage):
@@ -20,3 +21,6 @@ class MainPage(BasePage):
 
     def is_login_button_visible(self):
         return self.is_element_visible(MainPageLocators.LOGIN_BUTTON)
+
+    def modal_title(self):
+        return self.driver.find_element(*AuthModalLocators.MODAL_TITLE).text

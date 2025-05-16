@@ -12,7 +12,6 @@ class MainPageLocators:
 class LoginPageLocators:
     NO_ACCOUNT_BUTTON = (By.XPATH, "//button[contains(text(), 'Нет аккаунта')]")
     EMAIL_INPUT = (By.NAME, "email")
-    EMAIL_INPUT_ERROR = (By.CSS_SELECTOR, '#root > div > div.homePage_homepageStyle__WP-Y1 > div.homePage_modal__zSdUB > form > div.popUp_inputColumn__RgD8n > div:nth-child(1) > div > div')
     PASSWORD_INPUT = (By.NAME, "password")
     CONFIRM_PASSWORD_INPUT = (By.NAME, "submitPassword")
     CREATE_ACCOUNT_BUTTON = (By.XPATH, "//button[contains(text(), 'Создать аккаунт')]")
@@ -28,7 +27,7 @@ class ProfilePageLocators:
 
 class PostAdPageLocators:
     TITLE_INPUT = (By.NAME, "name")
-    DESCRIPTION_INPUT = (By.XPATH, "/html/body/div/div/div[2]/div/form/div[4]/div/textarea")
+    DESCRIPTION_INPUT = (By.XPATH, "//textarea[@name='description']")
     PRICE_INPUT = (By.NAME, "price")
     CATEGORY_DROPDOWN = (By.NAME, "category")
     CITY_DROPDOWN = (By.NAME, "city")
@@ -37,4 +36,4 @@ class PostAdPageLocators:
 
 
 class AuthModalLocators:
-    MODAL_TITLE = (By.CSS_SELECTOR, "#root > div > div.homePage_homepageStyle__WP-Y1 > div.homePage_modal__zSdUB > form > div.popUp_titleRow__M7tGg > h1")
+    MODAL_TITLE = (By.CSS_SELECTOR, ".popUp_titleRow__M7tGg")
