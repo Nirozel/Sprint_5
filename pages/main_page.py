@@ -1,6 +1,5 @@
 from pages.base_page import BasePage
-from locators.locators import MainPageLocators, AuthModalLocators
-from selenium.webdriver.support import expected_conditions as EC
+from locators.locators import MainPageLocators, AuthModalLocators, PostAdPageLocators
 
 
 class MainPage(BasePage):
@@ -24,3 +23,16 @@ class MainPage(BasePage):
 
     def modal_title(self):
         return self.driver.find_element(*AuthModalLocators.MODAL_TITLE).text
+
+    def ad_title(self, value):
+        self.driver.find_element(*PostAdPageLocators.TITLE_INPUT).send_keys(value)
+
+    def ad_description(self, value):
+        self.driver.find_element(*PostAdPageLocators.DESCRIPTION_INPUT).send_keys(value)
+
+    def ad_price(self, value):
+        self.driver.find_element(*PostAdPageLocators.PRICE_INPUT).send_keys(value)
+
+    def publicate_button(self):
+        self.driver.find_element(*PostAdPageLocators.PUBLISH_BUTTON).click()
+

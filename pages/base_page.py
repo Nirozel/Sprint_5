@@ -26,3 +26,9 @@ class BasePage:
     def get_element_text(self, locator):
         element = self.wait.until(EC.visibility_of_element_located(locator))
         return element.text
+
+    def scroll_down(self):
+        self.driver.execute_script("window.scrollBy(0, 500);")
+
+    def scroll_up(self):
+        self.driver.execute_script("window.scrollBy(0, -500);")

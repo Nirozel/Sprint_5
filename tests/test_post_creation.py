@@ -1,9 +1,7 @@
 import time
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-from locators.locators import PostAdPageLocators
-
-
+from pages.base_page import BasePage
 
 class TestPostCreation:
     def test_unauthenticated_user_cannot_create_post(self, driver):
@@ -15,20 +13,16 @@ class TestPostCreation:
     def test_authenticated_user_can_create_post(self, driver):
         main_page = MainPage(driver)
         login_page = LoginPage(driver)
-
-        # Register and login
+        base_page = BasePage(driver)
         main_page.go_to_login_page()
         login_page.go_to_registration()
         login_page.register_new_user()
         assert main_page.is_user_avatar_visible()
         main_page.go_to_post_ad_page()
-        driver.find_element(*PostAdPageLocators.TITLE_INPUT).send_keys("Test Ad")
-        driver.execute_script("window.scrollBy(0, 500);")
-        driver.find_element(*PostAdPageLocators.DESCRIPTION_INPUT).send_keys("Test Description")
-        driver.find_element(*PostAdPageLocators.PRICE_INPUT).send_keys("100")
-        driver.find_element(*PostAdPageLocators.PUBLISH_BUTTON).click()
-        driver.execute_script("window.scrollBy(0, -500);")
+        main_page.ad_title("Test Ad")
+        base_page.scroll_down()
+        main_page.ad_description("Test Description")
+        main_page.ad_price("100")
+        main_page.publicate_button()
+        base_page.scroll_up()
         assert main_page.is_user_avatar_visible()
-
-
-
